@@ -73,7 +73,6 @@ public class Student_Management extends javax.swing.JFrame {
     public void OnOffTable(boolean a, boolean b){
         this.viewTB.show(a);
         
-        this.viewTBSearch.show(b);
     }
 
     public void viewTable() {
