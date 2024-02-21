@@ -76,15 +76,29 @@ public class Student_Management extends javax.swing.JFrame {
     }
 
     public void viewTable() {
- 
-        DefaultTableModel model = (DefaultTableModel) this.viewTB.getModel();
-        model.setNumRows(0);
-        int n = 1;
-        for (Students x : list) {
-            model.addRow(new Object[]{n++, x.getID(), x.getName(), "" + x.getYear(), x.getAddress(), x.getGender()});
+                
+        if(txtSearch.getText().equals("")){
+            DefaultTableModel model = (DefaultTableModel) this.viewTB.getModel();
+            model.setNumRows(0);
+            int n = 1;
+            for (Students x : list) {
+                model.addRow(new Object[]{n++, x.getID(), x.getName(), "" + x.getYear(), x.getAddress(), x.getGender()});
+            }
         }
-
-
+        
+        else{
+            String search = txtSearch.getText();
+            DefaultTableModel model = (DefaultTableModel) this.viewTB.getModel();
+            model.setNumRows(0);
+            int n = 1;
+            for (Students x : list) {
+                if(x.getID().equals(search)){
+                model.addRow(new Object[]{n++, x.getID(), x.getName(), "" + x.getYear(), x.getAddress(), x.getGender()});
+                
+                }
+            }
+        }
+        
     }
     
     public void Refresh(){
@@ -330,6 +344,11 @@ public class Student_Management extends javax.swing.JFrame {
                 txtSearchActionPerformed(evt);
             }
         });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -461,6 +480,10 @@ public class Student_Management extends javax.swing.JFrame {
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        viewTable();
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
