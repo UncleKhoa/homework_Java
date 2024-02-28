@@ -32,6 +32,7 @@ public class TAbSide extends javax.swing.JFrame {
         String currentDirectory = file.getAbsolutePath();
         String relativePath = currentDirectory + "\\src\\main\\java\\Image\\user.png"; // Đường dẫn tương đối
         File imageFile = new File(relativePath);
+        System.out.println("Tests.TabSide.TAbSide.setImage()");
 
         // Tạo một ImageIcon từ một File
         ImageIcon icon = new ImageIcon(imageFile.getAbsolutePath());
